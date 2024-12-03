@@ -51,6 +51,44 @@ Aqui está uma versão adaptada para o **ESP8266** usando a **IDE Arduino**:
         // O código principal geralmente fica vazio se não houver uma funcionalidade contínua
     }
 
+## Código compilado
+
+```
+// Definição dos pinos dos relés
+#define RELE1 5  // Pino D5
+#define RELE2 18 // Pino D18
+#define RELE3 19 // Pino D19
+
+// Função para ligar uma bomba por um determinado tempo
+void acionarBomba(int pino, int tempo) {
+  digitalWrite(pino, HIGH); // Liga o relé
+  delay(tempo);             // Aguarda o tempo especificado
+  digitalWrite(pino, LOW);  // Desliga o relé
+}
+
+void setup() {
+  // Configuração dos pinos como saída
+  pinMode(RELE1, OUTPUT);
+  pinMode(RELE2, OUTPUT);
+  pinMode(RELE3, OUTPUT);
+
+  // Inicializa os relés desligados
+  digitalWrite(RELE1, LOW);
+  digitalWrite(RELE2, LOW);
+  digitalWrite(RELE3, LOW);
+}
+
+void loop() {
+  // Liga cada bomba por um tempo específico (em milissegundos)
+  acionarBomba(RELE1, 3000); // Bomba 1 ligada por 3 segundos
+  delay(1000);               // Intervalo de 1 segundo
+  acionarBomba(RELE2, 2000); // Bomba 2 ligada por 2 segundos
+  delay(1000);               // Intervalo de 1 segundo
+  acionarBomba(RELE3, 4000); // Bomba 3 ligada por 4 segundos
+  delay(1000);               // Intervalo de 1 segundo
+}
+```
+
 ## Ajustes Importantes
 
 - **Pinos**: Configure os pinos corretos de acordo com o esquema de conexão.
